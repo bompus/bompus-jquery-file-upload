@@ -1,6 +1,6 @@
 <?php
 /*!
- * Bompus File Upload v1.0.0
+ * Bompus File Upload v1.0.1
  * https://upload.bompus.com/
  *
  * DO NOT USE THIS IN PRODUCTION
@@ -15,6 +15,10 @@ header('X-Robots-Tag: noindex, noarchive, nofollow, noimageindex');
 header('Content-type: application/json');
 
 function get_upload_info($meta, $file_name, $file_chunk) {
+	if (isset($_SERVER['CONTENT_LENGTH']) && (empty($_POST))) {
+		die(json_encode(['message' => 'File is too large. Please try again with a smaller file.']));
+	}
+
 	$valid_meta = [
 		'upload-1',
 		'upload-2'
@@ -39,14 +43,6 @@ function get_upload_info($meta, $file_name, $file_chunk) {
 		die(json_encode(['message' => 'Invalid Filename - Code E2.<br />A valid 3 or 4 character extension is required, such as .jpg , .jpeg , .png , .gif , .pdf , .mp4']));
 	} else if (substr($ext,0,3) === 'php' || substr($ext,0,3) === 'asp' || substr($ext,0,3) === 'htm' || substr($ext,0,2) === 'js' || $ext === 'cgi' || $ext === 'pl' || $ext === 'py' || $ext === 'phtml' || $ext === 'shtml' || $ext === 'sh') {
 		die(json_encode(['message' => 'Invalid File Extension - Code E3.']));
-	}
-
-	if (isset($_SERVER['CONTENT_LENGTH']) && (empty($_POST))) {
-		$max_allowed = min(return_bytes(ini_get('post_max_size')), return_bytes(ini_get('upload_max_filesize')));
-		$content_length = (int) $_SERVER['CONTENT_LENGTH'];
-		if ($content_length > $max_allowed ) {
-			die(json_encode(['message' => 'File is too large. Please try again with a file smaller than ' . ($max_allowed / 1048576) . 'MB.']));
-		}
 	}
 
 	if ($file_chunk === 0 && is_dir($dir) === true) {
@@ -140,36 +136,6 @@ function handle_upload() {
 
 	$data->taken = microtime(true) - $start;
 	die(json_encode($data));
-}
-
-function return_bytes ($val) {
-	if (empty($val)) { return 0; }
-	
-	$val = trim($val);
-	preg_match('#([0-9]+)[\s]*([a-z]+)#i', $val, $matches);
-	
-	$last = '';
-	if (isset($matches[2])) {
-		$last = $matches[2];
-	}
-
-	if (isset($matches[1])) {
-		$val = (int) $matches[1];
-	}
-
-	switch (strtolower($last)) {
-		case 'g':
-		case 'gb':
-			$val *= 1024;
-		case 'm':
-		case 'mb':
-			$val *= 1024;
-		case 'k':
-		case 'kb':
-			$val *= 1024;
-	}
-
-	return (int) $val;
 }
 
 handle_upload();

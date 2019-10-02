@@ -1,4 +1,15 @@
 <?php
+/*!
+ * Bompus File Upload v1.0.1
+ * https://upload.bompus.com/
+ *
+ * Requires:
+ * jquery 1.12+: <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js'></script>
+ * async 2.6.x: <script src='https://cdnjs.cloudflare.com/ajax/libs/async/2.6.3/async.min.js'></script>
+ *
+ * Copyright Aaron Queen
+ */
+
 header('Cache-Control: no-cache, must-revalidate, max-age=0');
 header('Pragma: no-cache');
 header('X-Robots-Tag: noindex, noarchive, nofollow, noimageindex');
