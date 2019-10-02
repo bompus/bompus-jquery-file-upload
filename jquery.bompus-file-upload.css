@@ -13,7 +13,7 @@ div[data-bfu-text] a {
 }
 
 div[data-bfu-text] a.bfu-dl {
-  width: 280px;
+  max-width: 280px;
   overflow: hidden;
   text-overflow: ellipsis;
 }
