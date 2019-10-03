@@ -16,6 +16,7 @@ div[data-bfu-text] a.bfu-dl {
   max-width: 280px;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
   color: #00f;
 }
 
