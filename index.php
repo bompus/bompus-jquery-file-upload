@@ -1,6 +1,6 @@
 <?php
 /*!
- * Bompus File Upload v1.0.2
+ * Bompus File Upload v1.0.4
  * https://github.com/bompus/bompus-jquery-file-upload
  *
  * Requires:
@@ -142,7 +142,7 @@ header('X-Robots-Tag: noindex, noarchive, nofollow, noimageindex');
 	</head>
 	<body>
 		<div class='container'>
-			<h3 style='margin:0;margin-bottom:15px;'>Bompus File Upload - v1.0.3 - <a target='_blank' href='https://github.com/bompus/bompus-jquery-file-upload'>GitHub</a></h3>
+			<h3 style='margin:0;margin-bottom:15px;'>Bompus File Upload - v1.0.4 - <a target='_blank' href='https://github.com/bompus/bompus-jquery-file-upload'>GitHub</a></h3>
 			<form action='#' method='get' onsubmit='alert("Form Submitted. Not really though, this does not actually submit anywhere."); return false;'>
 				
 			<div class='example'>

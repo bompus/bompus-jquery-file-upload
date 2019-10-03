@@ -1,5 +1,5 @@
 /*!
- * Bompus File Upload v1.0.2
+ * Bompus File Upload v1.0.4
  * https://github.com/bompus/bompus-jquery-file-upload
  *
  * Requires:
@@ -42,7 +42,7 @@
         // when falling back to full mode, do not allow a file over this size (in MB)
         maxFullSizeMB: 20,
         // we will attempt to retry a failed HTTP POST request this many times before giving up, set to 0 to disable retries
-        maxRetries: 1,
+        maxRetries: 3,
 
         elements: {
           form: form,
@@ -176,7 +176,8 @@
 
     e.preventDefault();
 
-    self.file = self.o.elements.fileInput.get(0).files[0];
+    this.file = this.o.elements.fileInput.get(0).files[0];
+    this.method = "chunk";
 
     this.o.hooks.fileSelected.call(self, function(err) {
       if (err) {
@@ -220,6 +221,7 @@
     this.setInfoText("");
     this.o.elements.fileInput.prop("disabled", false).show();
     this.o.elements.fileInput.get(0).value = null;
+    this.method = "chunk";
   };
 
   bompusFileUpload.prototype.reset = function() {
@@ -364,7 +366,7 @@
       if (this.method === "chunk") {
         formData.append("file", this.file.slice(start, end));
       } else if (this.method === "full") {
-        if (this.file.size > this.o.maxFullSizeMB) {
+        if (this.file.size > this.o.maxFullSizeMB * 1024 * 1024) {
           return cb("File is too large. Please try again with a file smaller than " + this.o.maxFullSizeMB + "MB.");
         }
 
@@ -400,13 +402,13 @@
         return xhr;
       },
       error: function(jqXHR, textStatus, errorThrown) {
-        if (retryNum < self.o.maxRetries) {
-          // if ANY request "fails" ( timeout, server error, non-200 status code ), we retry it once after a 1000ms delay
+        if (this.method === "chunk" && myAction === "sendChunk" && retryNum < self.o.maxRetries) {
+          // if chunking, and any sendChunk request "fails" ( timeout, server error, non-200 status code ), we retry it after a delay of (retryNum * 1000ms)
           retryNum++;
 
           setTimeout(function() {
             self.upload_chunk(myChunkNum, myAction, retryNum, cb);
-          }, 1000);
+          }, retryNum * 1000);
 
           return;
         }

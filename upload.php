@@ -1,6 +1,6 @@
 <?php
 /*!
- * Bompus File Upload v1.0.1
+ * Bompus File Upload v1.0.4
  * https://upload.bompus.com/
  *
  * DO NOT USE THIS IN PRODUCTION
@@ -87,6 +87,10 @@ function handle_upload() {
 	$file_chunk_max = intval($p->file_chunk_max);
 	$act = $p->chunk_action;
 
+	if ($act === 'sendChunk' && $p->chunk_method === 'chunk') {
+		// die('error state testing');
+	}
+
 	$ret = get_upload_info($p->meta, $p->file_name, $file_chunk);
 
 	$data = new stdClass();
@@ -134,7 +138,7 @@ function handle_upload() {
 		// $image->writeToFile($ret->file_path, ['strip' => true, 'Q' => 100]); // strip exif data, quality 100%
 	}
 
-	$data->taken = microtime(true) - $start;
+	$data->taken = (float) number_format(microtime(true) - $start, 6, '.', '');
 	die(json_encode($data));
 }
 
