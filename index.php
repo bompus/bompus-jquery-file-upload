@@ -129,11 +129,11 @@ header('X-Robots-Tag: noindex, noarchive, nofollow, noimageindex');
 		<!-- END: EXAMPLE PAGE STYLES, NOT NEEDED FOR PLUGIN USAGE -->
 
 		<!-- BEGIN: supporting files for integrating with an image cropper -->
-		<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.4/croppie.min.css' />
-		<script src='https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.4/croppie.min.js'></script>
+		<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/croppie@2.6.4/croppie.min.css' />
+		<script src='https://cdn.jsdelivr.net/npm/croppie@2.6.4/croppie.min.js'></script>
 
-		<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.css' />
-		<script src='https://cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js'></script>
+		<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/featherlight@1.7.13/release/featherlight.min.css' />
+		<script src='https://cdn.jsdelivr.net/npm/featherlight@1.7.13/release/featherlight.min.js'></script>
 		<!-- END: supporting files for integrating with an image cropper -->
 	</head>
 	<body>
