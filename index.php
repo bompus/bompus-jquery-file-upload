@@ -109,6 +109,10 @@ header('X-Robots-Tag: noindex, noarchive, nofollow, noimageindex');
 		</style>
 
 		<script>
+			var myGetFileDownloadUrl = function(uriEncodedFilename) {
+				return '/files/' + this.o.fieldName + '/' + uriEncodedFilename;
+			};
+			
 			var myProgressStart = function() {
 				if ($("#submitdiv #major-publishing-actions .inProgressPub").length === 0) {
 					$("#submitdiv #major-publishing-actions").prepend(
@@ -154,24 +158,12 @@ header('X-Robots-Tag: noindex, noarchive, nofollow, noimageindex');
 					<input data-bfu-hidden="<?php echo $name; ?>" type="hidden" name="<?php echo $name; ?>" id="<?php echo $name; ?>" value="<?php echo $filename; ?>" />
 					<script>
 						(function($) {
+							var fieldName = '<?php echo $name; ?>';
 							var upload_1 = $.bompusFileUpload({
 								postUrl: '/upload.php',
-								fieldName: '<?php echo $name; ?>',
+								fieldName: fieldName,
 								hooks: {
-									getFileDownloadUrl: function(uriEncodedFilename) {
-										return '/files/upload-1/' + uriEncodedFilename;
-
-										/*
-										var currentUrl = '/wp-admin/admin-ajax/' + uriEncodedFilename + '/' + '?action=dls_admin_download&post=' + postId + '&meta=' + metaId;
-										var re = /(?:\.([^.]+))?$/;
-										var ext = re.exec(uriEncodedFilename)[1];
-										if (ext === "jpg" || ext === "png" || ext === "gif") {
-											// Image Viewer Overlay
-											currentUrl = '/image-frame.php#action=dls_admin_download&post=' + postId + '&meta=' + metaId;
-										}
-										return currentUrl;
-										*/
-									},
+									getFileDownloadUrl: myGetFileDownloadUrl,
 									beforeChunkSend: function(formData) {
 										formData.append('action', 'dls_admin_ajax_upload');
 										formData.append('post', '<?php echo $postId; ?>');
@@ -219,21 +211,20 @@ header('X-Robots-Tag: noindex, noarchive, nofollow, noimageindex');
 					<input data-bfu-hidden="<?php echo $name; ?>" type="hidden" name="<?php echo $name; ?>" id="<?php echo $name; ?>" value="<?php echo $filename; ?>" />
 					<script>
 						(function($) {
+							var fieldName = '<?php echo $name; ?>';
 							var upload_2 = $.bompusFileUpload({
 								postUrl: '/upload.php',
-								fieldName: '<?php echo $name; ?>',
+								fieldName: fieldName,
 								hooks: {
-									getFileDownloadUrl: function(uriEncodedFilename) {
-										return '/files/upload-2/' + uriEncodedFilename;
-									},
+									getFileDownloadUrl: myGetFileDownloadUrl,
 									setText: function(fromInit, $dl, $remove) {
-										$('#upload-2-img').attr('src', this.currentUrl);
+										$('#' + fieldName + '-img').attr('src', this.currentUrl);
 									},
 									fileSelected: function(done) {
 										var self = this;
 										var clickedSave = false;
 										var objUrlSrc = URL.createObjectURL(self.file);
-										var popupContents = $('#upload-2-popup');
+										var popupContents = $('#' + fieldName + '-popup');
 
 										var cropDiv = $('<div />');
 										var content = $('<div />');
@@ -266,7 +257,7 @@ header('X-Robots-Tag: noindex, noarchive, nofollow, noimageindex');
 
 												// show the image immediately to reduce display blip during server load
 												var tmpUrlSrc = URL.createObjectURL(self.file);
-												$('#upload-2-img').attr('src', tmpUrlSrc);
+												$('#' + fieldName + '-img').attr('src', tmpUrlSrc);
 												setTimeout(function() {
 													URL.revokeObjectURL(tmpUrlSrc);
 												}, 0);
