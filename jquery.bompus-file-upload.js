@@ -1,10 +1,10 @@
 /*!
- * Bompus File Upload v1.0.0
- * https://upload.bompus.com/
+ * Bompus File Upload v1.0.1
+ * https://github.com/bompus/bompus-jquery-file-upload
  *
  * Requires:
- * jquery 1.12+: <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js'></script>
- * async 2.6.x: <script src='https://cdnjs.cloudflare.com/ajax/libs/async/2.6.3/async.min.js'></script>
+ * jquery 1.12+: <script src='https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js'></script>
+ * async 2.6.x: <script src='https://cdn.jsdelivr.net/npm/async@2.6.3/dist/async.min.js'></script>
  *
  * Copyright Aaron Queen
  */

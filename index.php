@@ -1,11 +1,11 @@
 <?php
 /*!
  * Bompus File Upload v1.0.1
- * https://upload.bompus.com/
+ * https://github.com/bompus/bompus-jquery-file-upload
  *
  * Requires:
- * jquery 1.12+: <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js'></script>
- * async 2.6.x: <script src='https://cdnjs.cloudflare.com/ajax/libs/async/2.6.3/async.min.js'></script>
+ * jquery 1.12+: <script src='https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js'></script>
+ * async 2.6.x: <script src='https://cdn.jsdelivr.net/npm/async@2.6.3/dist/async.min.js'></script>
  *
  * Copyright Aaron Queen
  */
@@ -21,8 +21,8 @@ header('X-Robots-Tag: noindex, noarchive, nofollow, noimageindex');
 		<meta name="viewport" content="width=device-width,initial-scale=1.0" />
 
 		<!-- BEGIN: DEPENDS ON async and jquery library --->
-		<script src='https://cdnjs.cloudflare.com/ajax/libs/async/2.6.3/async.min.js'></script>
-		<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js'></script>
+		<script src='https://cdn.jsdelivr.net/npm/async@2.6.3/dist/async.min.js'></script>
+		<script src='https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js'></script>
 
 		<link rel="stylesheet" href="./jquery.bompus-file-upload.css?v=<?php echo time(); ?>" />
 		<script src="./jquery.bompus-file-upload.js?v=<?php echo time(); ?>"></script>
