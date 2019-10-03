@@ -32,6 +32,8 @@ header('X-Robots-Tag: noindex, noarchive, nofollow, noimageindex');
 		<style>
 			html, body { margin: 0; padding: 0; box-sizing: border-box; }
 			*, *:before, *:after { box-sizing: inherit; }
+			
+			h3 a:visited { color:#00f; }
 
 			.container {
 				width: 500px;
@@ -136,6 +138,7 @@ header('X-Robots-Tag: noindex, noarchive, nofollow, noimageindex');
 	</head>
 	<body>
 		<div class='container'>
+			<h3 style='margin:0;margin-bottom:15px;'>Bompus File Upload - v1.0.2 - <a target='_blank' href='https://github.com/bompus/bompus-jquery-file-upload'>GitHub</a></h3>
 			<form action='#' method='get' onsubmit='alert("Form Submitted. Not really though, this does not actually submit anywhere."); return false;'>
 				
 			<div class='example'>
