@@ -1,6 +1,6 @@
 <?php
 /*!
- * Bompus File Upload v1.0.1
+ * Bompus File Upload v1.0.2
  * https://github.com/bompus/bompus-jquery-file-upload
  *
  * Requires:

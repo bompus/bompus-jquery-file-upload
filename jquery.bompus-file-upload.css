@@ -1,5 +1,5 @@
 div[data-bfu-text] {
-  padding: 10px 0px 10px 0px;
+  padding: 0 0 2px 0;
 }
 
 div[data-bfu-text] span.bfu-error {
@@ -16,6 +16,7 @@ div[data-bfu-text] a.bfu-dl {
   max-width: 280px;
   overflow: hidden;
   text-overflow: ellipsis;
+  color: #00f;
 }
 
 div[data-bfu-text] a.bfu-remove {

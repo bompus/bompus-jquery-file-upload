@@ -1,5 +1,5 @@
 /*!
- * Bompus File Upload v1.0.1
+ * Bompus File Upload v1.0.2
  * https://github.com/bompus/bompus-jquery-file-upload
  *
  * Requires:
@@ -210,12 +210,14 @@
   bompusFileUpload.prototype.enableUpload = function() {
     this.o.elements.fileInput.removeClass("inProgress");
     this.toggleFormSubmit();
-    this.setInfoText("");
 
     if (this.readonly === true) {
-      return this.setInfoText("No File Uploaded");
+      this.setInfoText("No File Uploaded");
+      this.o.elements.fileInput.hide();
+      return;
     }
 
+    this.setInfoText("");
     this.o.elements.fileInput.prop("disabled", false).show();
     this.o.elements.fileInput.get(0).value = null;
   };
