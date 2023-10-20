@@ -214,7 +214,7 @@
 
     if (this.readonly === true) {
       this.setInfoText("No File Uploaded");
-      this.o.elements.fileInput.show();
+      this.o.elements.fileInput.hide();
       return;
     }
 
