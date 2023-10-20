@@ -1,5 +1,5 @@
 /*!
- * Bompus File Upload v1.0.4
+ * Bompus File Upload v1.0.5
  * https://github.com/bompus/bompus-jquery-file-upload
  *
  * Requires:
@@ -214,7 +214,7 @@
 
     if (this.readonly === true) {
       this.setInfoText("No File Uploaded");
-      this.o.elements.fileInput.hide();
+      // this.o.elements.fileInput.hide();
       return;
     }
 
