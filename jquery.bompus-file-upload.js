@@ -4,7 +4,7 @@
  *
  * Requires:
  * jquery 1.12+: <script src='https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js'></script>
- * async 2.6.x: <script src='https://cdn.jsdelivr.net/npm/async@2.6.3/dist/async.min.js'></script>
+ * async 2.6.x: <script src='https://cdn.jsdelivr.net/npm/async@2.6.4/dist/async.min.js'></script>
  *
  * Copyright Aaron Queen
  */
