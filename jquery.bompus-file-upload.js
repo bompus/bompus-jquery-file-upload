@@ -99,7 +99,7 @@
           },
           beforeChunkSend: function(formData) {
             // you can use this hook to append custom fields, which you will almost always want
-            formData.append("bfu_beforeChunkSend_hook", "abc123");
+            // formData.append("bfu_beforeChunkSend_hook", "abc123");
           },
           progressStart: function() {},
           progressEnd: function() {},
