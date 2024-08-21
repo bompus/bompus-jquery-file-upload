@@ -1,5 +1,5 @@
 /*!
- * Bompus File Upload v1.0.8
+ * Bompus File Upload v1.0.9
  * https://github.com/bompus/bompus-jquery-file-upload
  *
  * Requires:
@@ -420,9 +420,10 @@
           data = {};
         }
 
+        var success = data.success;
         data = data.data ? data.data : data;
 
-        if (data.success !== true) {
+        if (success !== true) {
           var errMessage = data.message ? data.message : "Unknown Error E426.";
           return cb(errMessage);
         }
