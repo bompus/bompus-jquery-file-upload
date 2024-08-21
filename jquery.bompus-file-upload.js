@@ -1,5 +1,5 @@
 /*!
- * Bompus File Upload v1.0.7
+ * Bompus File Upload v1.0.8
  * https://github.com/bompus/bompus-jquery-file-upload
  *
  * Requires:
@@ -420,26 +420,33 @@
           data = {};
         }
 
+        data = data.data ? data.data : data;
+
         if (data.success !== true) {
-          data = data.data ? data.data : data;
-          var errMessage = data.message ? data.message : "Unknown Error E340.";
+          var errMessage = data.message ? data.message : "Unknown Error E426.";
           return cb(errMessage);
         }
 
-        if (!lengthComputable && myAction === "sendChunk") {
-          // progress event is more accurate, but we fallback if for some reason lengthComputable is not truthy (2/2)
-          self.chunkProgressBytes[progressIdx] = myChunkByteLen;
-          self.chunkProgressPct[progressIdx] = 100;
-          self.tickProgressDebounce(false);
-        }
-
-        if (myAction === "combineChunks") {
-          self.tickProgress(true);
-        }
-
-        data = data.data ? data.data : data;
         if (!data.file_name) {
-          return cb("Unknown Error E356.");
+          return cb("Unknown Error E431.");
+        }
+
+        switch (myAction) {
+          case 'initFile':
+            // server can slugify/unique the filename during initFile
+            self.filename = data.file_name;
+            break;
+          case 'sendChunk':
+            if (!lengthComputable) {
+              // progress event is more accurate, but we fallback if for some reason lengthComputable is not truthy (2/2)
+              self.chunkProgressBytes[progressIdx] = myChunkByteLen;
+              self.chunkProgressPct[progressIdx] = 100;
+              self.tickProgressDebounce(false);
+            }
+            break;
+          case 'combineChunks':
+            self.tickProgress(true);
+            break;
         }
 
         return cb(null, data);
